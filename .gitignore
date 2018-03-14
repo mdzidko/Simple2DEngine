@@ -77,3 +77,19 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.db
+.vs/Simple2DEngine/v15/Browse.VC.opendb
+*.ipch
+Debug/exe/resources/images/graveyard_map/BG.png
+*.png
+*.ilk
+Debug/exe/Simple2DEngine.pdb
+*.enc
+*.suo
+Debug/obj/Simple2DEngine.log
+*.tlog
+Release/exe/Simple2DEngine.iobj
+*.ipdb
+Release/obj/Simple2DEngine.log
+*.pdb
+Debug/obj/vc141.idb
