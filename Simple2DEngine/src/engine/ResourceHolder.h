@@ -2,13 +2,11 @@
 
 #include <memory>
 #include <map>
+#include <assert.h>
 
 template <typename Resource, typename Identifier> class ResourceHolder
 {
 public:
-	void Load(Identifier id, const std::string& filename);
-
-	template <typename Resource, typename Identifier>
 	void Load(Identifier id, const std::string& filename);
 
 	const Resource& Get(Identifier id) const;
@@ -37,3 +35,5 @@ template <typename Resource, typename Identifier> const Resource& ResourceHolder
 
 	return *founded->second;
 };
+
+using TexturesHolder = ResourceHolder<sf::Texture, std::string>;

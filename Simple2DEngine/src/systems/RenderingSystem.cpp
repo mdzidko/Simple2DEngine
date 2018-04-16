@@ -13,7 +13,7 @@ void RenderingSystem::Refresh()
 	}
 }
 
-void RenderingSystem::Update(sf::RenderWindow* window, float interpolation)
+void RenderingSystem::Render(sf::RenderWindow* window, float interpolation)
 {
 	window->clear();
 

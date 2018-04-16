@@ -1,92 +1,56 @@
 #include "GameState.h"
 
-
-GameState::GameState(EntitiesVec&& entieties)
+void GameState::Update(GameStateMachine* gsm, float updateTime)
 {
-	stateEntities = std::move(entieties);
+    RefreshUpdaters();
 
-	for (const auto& e : stateEntities)
-		RegisterEntity(e.get());
+	if(world == nullptr)
+		return;
+
+    std::for_each(std::begin(updaters), std::end(updaters),
+                  [&](const auto& updater) { updater->Update(world.get(), gsm, updateTime); });
 }
 
-void GameState::AddContext(GameStateMachine* cont)
+void GameState::Render(float interpolation)
 {
-	context = cont;
+    RefreshRenderers();
+
+	if(world == nullptr)
+		return;
+
+    auto renderWindow = world->GetWorldViewWindow();
+
+    std::for_each(std::begin(renderers), std::end(renderers),
+                  [&](const auto& renderer) { renderer->Render(renderWindow, interpolation); });
 }
 
-void GameState::AddEntity(EntityPtr entity)
+void GameState::RefreshRenderers()
 {
-	RegisterEntity(entity.get());
-	stateEntities.push_back(std::move(entity));
+	for (const auto& r : renderers)
+		r->Refresh();
+}
+
+void GameState::RefreshUpdaters()
+{
+    for (const auto& u : updaters)
+		u->Refresh();
 }
 
 void GameState::RegisterEntity(Entity* entity)
 {
-	for (const auto& c : renderers)
-		c->AddEntity(entity);
+	for (const auto& r : renderers)
+		r->AddEntity(entity);
 
-	for (const auto& c : updaters)
-		c->AddEntity(entity);
+	for (const auto& u : updaters)
+		u->AddEntity(entity);
 }
 
 void GameState::AddUpdater(UpdaterPtr updater)
 {
-	for (const auto& e : stateEntities)
-		updater->AddEntity(e.get());
-
-	updaters.push_back(std::move(updater));
+	updaters.push_back(move(updater));
 }
 
 void GameState::AddRenderer(RendererPtr renderer)
 {
-	for (const auto& e : stateEntities)
-		renderer->AddEntity(e.get());
-
-	renderers.push_back(std::move(renderer));
-}
-
-void GameState::Update(GameStateMachine* context, float updateTime)
-{
-	Refresh();
-
-	std::for_each(std::begin(updaters), std::end(updaters),
-		[&](const auto& updater) { updater->Update(context, updateTime); });
-}
-
-void GameState::Render(sf::RenderWindow* window, float interpolation)
-{
-	Refresh();
-	
-	std::for_each(std::begin(renderers), std::end(renderers),
-		[&](const auto& renderer) { renderer->Update(window, interpolation); });
-}
-
-void GameState::Refresh()
-{
-	RefreshSystems();
-	RefreshEntities();
-}
-
-void GameState::RefreshEntities()
-{
-	stateEntities.erase(std::remove_if(stateEntities.begin(), stateEntities.end(),
-		[](const std::unique_ptr<Entity>& uPtr) {return !uPtr->IsAlive(); }), stateEntities.end());
-}
-
-void GameState::RefreshSystems()
-{
-	for (const auto& c : renderers) 
-		c->Refresh();
-
-	for (const auto& c : updaters)
-		c->Refresh();
-}
-
-
-void GameState::ResetEntities(EntitiesVec&& entieties)
-{
-	stateEntities = std::move(entieties);
-
-	for (const auto& e : stateEntities)
-		RegisterEntity(e.get());
+	renderers.push_back(move(renderer));
 }

@@ -49,7 +49,7 @@ public:
 
 	template<typename T> void RemoveComponent()
 	{
-		assert(hasComponent<T>());
+		assert(HasComponent<T>());
 
 		delete(componentsArray[UniqueId::GetUId<T>()]);
 		componentsArray[UniqueId::GetUId<T>()] = nullptr;

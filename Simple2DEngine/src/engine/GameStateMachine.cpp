@@ -9,18 +9,18 @@ void GameStateMachine::Update(int updateTime)
 	}
 };
 
-void GameStateMachine::Render(sf::RenderWindow* window, float interpolation)
+void GameStateMachine::Render(float interpolation)
 {
 	if (!states.empty())
 	{
 		auto currentState = states.top().get();
-		currentState->Render(window, interpolation);
+		currentState->Render(interpolation);
 	}
 };
 
 void GameStateMachine::Push(GameStatePtr state)
 {
-	states.push(std::move(state));
+    states.push(std::move(state));
 };
 
 void GameStateMachine::Pop()

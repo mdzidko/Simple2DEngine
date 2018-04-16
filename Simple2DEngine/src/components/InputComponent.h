@@ -19,6 +19,6 @@ public:
 	InputComponent();
 	~InputComponent();
 
-	std::map<std::string, std::shared_ptr<Command>> 
+	std::map<std::string, std::shared_ptr<Command>>
 };
 

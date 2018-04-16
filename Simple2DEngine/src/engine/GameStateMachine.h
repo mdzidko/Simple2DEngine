@@ -2,15 +2,15 @@
 
 #include <stack>
 #include <memory>
-
 #include "GameState.h"
-#include "SFML\Graphics\RenderWindow.hpp"
+
+using GameStateMachinePtr = std::unique_ptr<GameStateMachine>;
 
 class GameStateMachine
 {
 public:
 	void Update(int updateTime);
-	void Render(sf::RenderWindow* window, float interpolation);
+	void Render(float interpolation);
 
 	void Push(GameStatePtr state);
 	void Pop();

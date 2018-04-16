@@ -3,13 +3,12 @@
 #include <iostream>
 #include "SFML\Window\Event.hpp"
 
-
-Engine::Engine(std::unique_ptr<sf::RenderWindow> window, std::unique_ptr<GameStateMachine> stateMachine)
+void Engine::Init(WindowLoader* winLoader, GSMLoader* gsLoader, TexturesLoader* texturesLoader)
 {
-	mainWindow = std::move(window);
-	states = std::move(stateMachine);
+	LoadWindow(winLoader);
+	LoadTextures(texturesLoader);
+    LoadGameStates(gsLoader);
 }
-
 
 void Engine::Run()
 {
@@ -35,7 +34,7 @@ void Engine::Run()
 
 		float interpolation = lag / UPDATE_TIME;
 
-		states->Render(mainWindow.get(), interpolation);
+		states->Render(interpolation);
 	}
 }
 
@@ -48,3 +47,19 @@ void Engine::ProcessEvents()
 			mainWindow->close();
 	}
 }
+
+void Engine::LoadTextures(TexturesLoader* txLoader)
+{
+    txLoader->Load(texturesHolder);
+}
+
+void Engine::LoadWindow(WindowLoader *winLoader)
+{
+	mainWindow = std::move(winLoader->Load());
+}
+
+void Engine::LoadGameStates(GSMLoader *gsLoader)
+{
+    states = std::move(gsLoader->Load());
+}
+

@@ -1,8 +1,11 @@
 #pragma once
 
 #include <memory>
+#include "TexturesLoader.h"
 #include "GameStateMachine.h"
 #include "SFML\Graphics\RenderWindow.hpp"
+#include "WindowLoader.h"
+#include "GSMLoader.h"
 
 typedef float FrameTime;
 
@@ -12,13 +15,17 @@ const int UPDATE_TIME = 1000 / UPDATES_PER_SECOND;
 class Engine
 {
 public:
-	Engine(std::unique_ptr<sf::RenderWindow> window, std::unique_ptr<GameStateMachine> stateMachine);
-
+    void Init(WindowLoader* winLoader, GSMLoader* gsLoader, TexturesLoader* texturesLoader);
 	void Run();
-private:
-	std::unique_ptr<GameStateMachine> states;
-	std::unique_ptr<sf::RenderWindow> mainWindow;
 
+private:
+    GameStateMachinePtr states;
+    WindowPtr mainWindow;
+    TexturesHolder texturesHolder;
+
+	void LoadTextures(TexturesLoader* texturesLoader);
+	void LoadWindow(WindowLoader* winLoader);
+    void LoadGameStates(GSMLoader* gsLoader);
 
 	void ProcessEvents();
 };

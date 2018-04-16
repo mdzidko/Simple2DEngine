@@ -1,16 +1,16 @@
 #pragma once
 
-#include "System.h"
+#include "Renderer.h"
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "SpriteComponent.h"
 #include <map>
 
 using LayeredEntitiesMap = std::map<RenderLayers, std::vector<Entity*>>;
 
-class RenderingSystem : public System
+class RenderingSystem : public Renderer
 {
 public:
-	virtual void Update(sf::RenderWindow* window, float interpolation);
+	virtual void Render(sf::RenderWindow* window, float interpolation) override;
 	virtual void Refresh() override;
 
 protected:	

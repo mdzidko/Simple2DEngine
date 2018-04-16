@@ -36,12 +36,6 @@
     <ClInclude Include="src\engine\ResourceHolder.h">
       <Filter>src\engine</Filter>
     </ClInclude>
-    <ClInclude Include="src\engine\SFMLWindow.h">
-      <Filter>src\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\engine\SFMLWindowFactory.h">
-      <Filter>src\engine</Filter>
-    </ClInclude>
     <ClInclude Include="src\ecs\Component.h">
       <Filter>src\ecs</Filter>
     </ClInclude>
@@ -69,6 +63,42 @@
     <ClInclude Include="src\ecs\System.h">
       <Filter>src\ecs</Filter>
     </ClInclude>
+    <ClInclude Include="src\systems\Renderer.h">
+      <Filter>src\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\Updater.h">
+      <Filter>src\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\TexturesLoader.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\World.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\TexturesLoaderImpl.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\WindowLoader.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\WindowLoaderImpl.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\GSMLoader.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\GSMLoaderImpl.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\MenuStateFactory.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\PausedStateFactory.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\engine\PlayingStateFactory.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\engine\Engine.cpp">
@@ -78,12 +108,6 @@
       <Filter>src\engine</Filter>
     </ClCompile>
     <ClCompile Include="src\engine\GameStateMachine.cpp">
-      <Filter>src\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\SFMLWindow.cpp">
-      <Filter>src\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="src\engine\SFMLWindowFactory.cpp">
       <Filter>src\engine</Filter>
     </ClCompile>
     <ClCompile Include="src\ecs\Component.cpp">
@@ -106,6 +130,27 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\World.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\TexturesLoaderImpl.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\WindowLoaderImpl.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\GSMLoaderImpl.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\MenuStateFactory.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\PausedStateFactory.cpp">
+      <Filter>src\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\engine\PlayingStateFactory.cpp">
+      <Filter>src\engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

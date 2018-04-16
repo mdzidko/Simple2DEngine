@@ -2,45 +2,30 @@
 
 #include <memory>
 #include <vector>
-#include "RenderingSystem.h"
-#include "SimpleUpdater.h"
-
-class SimpleUpdater;
-
-using RendererPtr = std::unique_ptr<RenderingSystem>;
-using UpdaterPtr = std::unique_ptr<SimpleUpdater>;
-using EntityPtr = std::unique_ptr<Entity>;
-using EntitiesVec = std::vector<EntityPtr>;
+#include "Renderer.h"
+#include "Updater.h"
+#include "World.h"
 
 class GameStateMachine;
 
-class GameState {
-public:	
-	GameState(EntitiesVec&& entieties);
+class GameState
+{
+public:
+    void Update(GameStateMachine* gsm, float updateTime);
+	void Render(float interpolation);
 
-	void AddContext(GameStateMachine* context);
+    void AddUpdater(UpdaterPtr updater);
+    void AddRenderer(RendererPtr renderer);
 
-	void AddEntity(EntityPtr entity);
-	void ResetEntities(EntitiesVec&& entieties);
+    void RefreshRenderers();
+    void RefreshUpdaters();
+    void RegisterEntity(Entity* entity);
 
-	void AddRenderer(RendererPtr renderer);
-	void AddUpdater(UpdaterPtr updater);
+private:
+    std::vector<RendererPtr> renderers;
+    std::vector<UpdaterPtr> updaters;
 
-	void Update(GameStateMachine* context, float updateTime);
-	void Render(sf::RenderWindow* window, float interpolation);
-
-protected:
-	GameStateMachine* context;
-	
-	EntitiesVec stateEntities;
-
-	std::vector<RendererPtr> renderers;
-	std::vector<UpdaterPtr> updaters;
-
-	void Refresh();
-	void RefreshEntities();
-	void RefreshSystems();
-	void RegisterEntity(Entity* entity);
+    std::unique_ptr<World> world{nullptr};
 };
 
 typedef std::unique_ptr<GameState> GameStatePtr;
