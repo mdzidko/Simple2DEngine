@@ -1,7 +1,3 @@
-//
-// Created by Michał on 2018-04-13.
-//
-
 #include <iostream>
 #include "TexturesLoaderImpl.h"
 

@@ -1,7 +1,7 @@
 #include "SimpleUpdater.h"
 #include "PositionComponent.h"
 #include "SFML\Window\Keyboard.hpp"
-#include "GameStateMachine.h"
+#include "core/GameStateMachine.h"
 
 
 

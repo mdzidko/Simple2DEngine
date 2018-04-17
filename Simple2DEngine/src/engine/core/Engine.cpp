@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include <chrono>
 #include <iostream>
-#include "SFML\Window\Event.hpp"
+#include "SFML/Window/Event.hpp"
 
 void Engine::Init(WindowLoader* winLoader, GSMLoader* gsLoader, TexturesLoader* texturesLoader)
 {
@@ -60,6 +60,7 @@ void Engine::LoadWindow(WindowLoader *winLoader)
 
 void Engine::LoadGameStates(GSMLoader *gsLoader)
 {
-    states = std::move(gsLoader->Load());
+    Context context{mainWindow.get(), &texturesHolder};
+    states = std::move(gsLoader->Load(context));
 }
 

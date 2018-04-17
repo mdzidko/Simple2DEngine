@@ -2,7 +2,7 @@
 #include <map>
 #include "SFML\Window\Keyboard.hpp"
 #include <memory>
-#include "Command.h"
+#include "core/Command.h"
 
 static std::map<std::string, sf::Keyboard::Key> keysMap
 {

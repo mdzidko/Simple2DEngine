@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 #include "Entity.h"
-#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML/Graphics/RenderWindow.hpp"
 
 using EntityPtr =std::unique_ptr<Entity>;
 using EntitiesVec = std::vector<EntityPtr>;
@@ -13,7 +13,7 @@ class GameState;
 class World
 {
 public:
-	World(sf::RenderWindow* window);
+	World(sf::RenderWindow* window, GameState* gameState);
 
 	void AddEntity(EntityPtr entity);
 	void RefreshEntities();
@@ -28,3 +28,5 @@ private:
     sf::FloatRect worldBounds;
     sf::RenderWindow* renderWindow;
 };
+
+using WorldPtr = std::unique_ptr<World>;

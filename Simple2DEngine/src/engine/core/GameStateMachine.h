@@ -9,6 +9,8 @@ using GameStateMachinePtr = std::unique_ptr<GameStateMachine>;
 class GameStateMachine
 {
 public:
+    GameStateMachine(Context context);
+
 	void Update(int updateTime);
 	void Render(float interpolation);
 
@@ -17,7 +19,11 @@ public:
 
 	bool IsEmpty();
 
+    void LoadWorld(WorldLoader* worldLoader);
+
+    Context GetContext();
 private:
 	std::stack<GameStatePtr> states;
+    Context gameContext;
 };
 

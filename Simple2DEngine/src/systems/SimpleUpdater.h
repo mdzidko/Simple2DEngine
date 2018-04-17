@@ -1,6 +1,6 @@
 #pragma once
 
-#include <World.h>
+#include <core/World.h>
 #include "Updater.h"
 class GameStateMachine;
 

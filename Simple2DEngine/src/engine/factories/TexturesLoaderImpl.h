@@ -1,5 +1,4 @@
-#ifndef SIMPLE2DENGINE_TEXTURESLOADERIMPL_H
-#define SIMPLE2DENGINE_TEXTURESLOADERIMPL_H
+#pragma once
 
 #include "TexturesLoader.h"
 
@@ -9,5 +8,3 @@ public:
     void Load(TexturesHolder &texturesHolder) override;
 
 };
-
-#endif //SIMPLE2DENGINE_TEXTURESLOADERIMPL_H

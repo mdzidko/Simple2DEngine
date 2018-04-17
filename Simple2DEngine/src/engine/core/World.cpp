@@ -1,11 +1,12 @@
 #include "World.h"
 #include "GameState.h"
 
-World::World(sf::RenderWindow* window) : renderWindow(window)
-	, worldView(window->getDefaultView())
-	, worldBounds(0.f, 0.f, worldView.getSize().x, worldView.getSize().y) 
+World::World(sf::RenderWindow* window, GameState* gameState) :
+		renderWindow(window)
+		, parent(gameState)
+		, worldView(window->getDefaultView())
+		, worldBounds(0.f, 0.f, worldView.getSize().x, worldView.getSize().y)
 {
-
 }
 
 void World::AddEntity(EntityPtr entity)

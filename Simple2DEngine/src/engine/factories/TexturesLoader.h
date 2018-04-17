@@ -1,7 +1,7 @@
 #pragma once
 
-#include <SFML\Graphics\Texture.hpp>
-#include "ResourceHolder.h"
+#include <SFML/Graphics/Texture.hpp>
+#include "core/ResourceHolder.h"
 
 class TexturesLoader
 {

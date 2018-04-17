@@ -2,7 +2,7 @@
 
 GameStatePtr PausedStateFactory::Create()
 {
-    auto state = std::make_unique<GameState>();
+    //auto state = std::make_unique<GameState>(nullptr);
 
-    return state;
+    return nullptr;
 }

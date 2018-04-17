@@ -62,3 +62,5 @@ private:
 	std::vector<std::unique_ptr<Component>> components;
 	std::array<Component*, MAX_COMPONENTS> componentsArray;
 };
+
+using EntityPtr = std::unique_ptr<Entity>;

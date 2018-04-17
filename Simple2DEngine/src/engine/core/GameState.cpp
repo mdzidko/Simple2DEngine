@@ -1,5 +1,10 @@
 #include "GameState.h"
 
+GameState::GameState(Context context)
+{
+    gameContext = context;
+}
+
 void GameState::Update(GameStateMachine* gsm, float updateTime)
 {
     RefreshUpdaters();
@@ -53,4 +58,10 @@ void GameState::AddUpdater(UpdaterPtr updater)
 void GameState::AddRenderer(RendererPtr renderer)
 {
 	renderers.push_back(move(renderer));
+}
+
+void GameState::LoadWorld(WorldLoader* worldLoader)
+{
+	auto newWorld = worldLoader->Load(gameContext, this);
+	world = std::move(newWorld);
 }

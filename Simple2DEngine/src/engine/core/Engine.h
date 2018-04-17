@@ -1,11 +1,11 @@
 #pragma once
 
 #include <memory>
-#include "TexturesLoader.h"
+#include "factories/TexturesLoader.h"
 #include "GameStateMachine.h"
-#include "SFML\Graphics\RenderWindow.hpp"
-#include "WindowLoader.h"
-#include "GSMLoader.h"
+#include "SFML/Graphics/RenderWindow.hpp"
+#include "factories/WindowLoader.h"
+#include "factories/GSMLoader.h"
 
 typedef float FrameTime;
 
