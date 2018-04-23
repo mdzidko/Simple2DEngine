@@ -4,7 +4,10 @@
 #include <memory>
 #include "core/Command.h"
 
-static std::map<std::string, sf::Keyboard::Key> keysMap
+using KeysMap = std::map<std::string, sf::Keyboard::Key>;
+using CommandsMap = std::map<std::string, std::shared_ptr<Command>>;
+
+static KeysMap keysMap
 {
 	{ "ARROW_UP", sf::Keyboard::Key::Up },
 	{ "ARROW_DOWN", sf::Keyboard::Key::Down },
@@ -13,12 +16,12 @@ static std::map<std::string, sf::Keyboard::Key> keysMap
 	{ "SPACE", sf::Keyboard::Key::Space }
 };
 
+
 class InputComponent
 {
 public:
-	InputComponent();
-	~InputComponent();
-
-	std::map<std::string, std::shared_ptr<Command>>
+	InputComponent(CommandsMap commandsMap);
+private:
+	CommandsMap commandsMap;
 };
 
