@@ -9,6 +9,6 @@ public:
 
 private:
     bool CheckEntityMach(Entity *entity) override;
-
+	std::string GetPressedKey();
 };
 

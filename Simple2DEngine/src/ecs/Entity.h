@@ -31,7 +31,7 @@ public:
 	}
 
 
-	template<typename T, typename... TArgs> const T& AddComponent(TArgs&&... args)
+	template<typename T, typename... TArgs> T& AddComponent(TArgs&&... args)
 	{
 		assert(!HasComponent<T>());
 
