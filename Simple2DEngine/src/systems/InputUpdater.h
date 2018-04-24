@@ -7,8 +7,8 @@ class InputUpdater : public Updater
 public:
     void Update(World *world, GameStateMachine *context, float dT) override;
 
-protected:
+private:
     bool CheckEntityMach(Entity *entity) override;
-
+	std::string GetPressedKey();
 };
 

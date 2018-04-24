@@ -1,6 +1,12 @@
 #include "InputComponent.h"
 
-InputComponent::InputComponent(CommandsMap commandsMap)
+void InputComponent::executeCommand(std::string key)
 {
-	this->commandsMap = std::move(commandsMap);
+	auto commandIt = commandsMap.find(key);
+
+	if (commandIt != commandsMap.end())
+	{
+		auto command = commandIt->second.get();
+		command->execute(parent);
+	}
 }

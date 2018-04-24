@@ -1,5 +1,7 @@
 #include <PositionComponent.h>
 #include <SpriteComponent.h>
+#include <InputComponent.h>
+#include <core/TestCommandImpl.h>
 #include "WorldLoaderImpl.h"
 
 WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
@@ -12,6 +14,10 @@ WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
     auto initPos = sf::Vector2f(0, 0);
     rect->AddComponent<PositionComponent>(initPos);
     rect->AddComponent<SpriteComponent>(texturesHolder->Get("GRAVEYARD_BACKGROUND"), RenderLayers::BACK);
+
+
+	auto& input = rect->AddComponent<InputComponent>();
+	input.AddCommand<TestCommandImpl>("SPACE");
 
     newWorld->AddEntity(std::move(rect));
 
