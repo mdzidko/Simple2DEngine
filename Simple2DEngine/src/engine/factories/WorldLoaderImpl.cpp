@@ -2,6 +2,7 @@
 #include <SpriteComponent.h>
 #include <InputComponent.h>
 #include <core/TestCommandImpl.h>
+#include <MovementComponent.h>
 #include "WorldLoaderImpl.h"
 
 WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
@@ -11,39 +12,23 @@ WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
 
     auto rect = std::make_unique<Entity>();
 
-    auto initPos = sf::Vector2f(0, 0);
-    rect->AddComponent<PositionComponent>(initPos);
+    rect->AddComponent<PositionComponent>(0, 0);
     rect->AddComponent<SpriteComponent>(texturesHolder->Get("GRAVEYARD_BACKGROUND"), RenderLayers::BACK);
 
+	newWorld->AddEntity(std::move(rect));
+
+	rect = std::make_unique<Entity>();
+
+	rect->AddComponent<PositionComponent>(100, 300);
+	rect->AddComponent<SpriteComponent>(texturesHolder->Get("PLAYER_IDLE"), RenderLayers::FRONT);
 
 	auto& input = rect->AddComponent<InputComponent>();
 	input.AddCommand<TestCommandImpl>("SPACE");
+
+	auto& movement = rect->AddComponent<MovementComponent>();
+	movement.SetVelocity({ 1, 0 });
 
     newWorld->AddEntity(std::move(rect));
 
     return newWorld;
 }
-
-
-/*auto rect = std::make_unique<Entity>();
-
-auto initPos = sf::Vector2f(0, 0);
-rect->AddComponent<PositionComponent>(initPos);
-rect->AddComponent<SpriteComponent>(texturesHolder.Get("GRAVEYARD_BACKGROUND"), RenderLayers::BACK);
-
-EntitiesVec objVec;
-objVec.push_back(std::move(rect));
-
-rect = std::make_unique<Entity>();
-
-initPos = sf::Vector2f(60, 500);
-rect->AddComponent<PositionComponent>(initPos);
-rect->AddComponent<SpriteComponent>(texturesHolder.Get("TILE01"), RenderLayers::MIDDLE);
-objVec.push_back(std::move(rect));
-
-auto player = std::make_unique<Entity>();
-
-initPos = sf::Vector2f(200, 500);
-player->AddComponent<PositionComponent>(initPos);
-player->AddComponent<SpriteComponent>(texturesHolder.Get("PLAYER_IDLE"), RenderLayers::FRONT);
-objVec.push_back(std::move(player));*/

@@ -32,7 +32,7 @@ void RenderingSystem::Render(sf::RenderWindow* window, float interpolation)
 
 			texture->setSmooth(true);
 
-			sprite.setPosition(posComp.position);
+			sprite.setPosition(posComp.GetPosition());
 
 			window->draw(sprite);
 		});
