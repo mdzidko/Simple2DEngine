@@ -1,5 +1,4 @@
 #include <RenderingSystem.h>
-#include <SimpleUpdater.h>
 #include "MenuStateFactory.h"
 
 GameStatePtr MenuStateFactory::Create()

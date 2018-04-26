@@ -1,7 +1,7 @@
 #include <PositionComponent.h>
 #include <SpriteComponent.h>
 #include <InputComponent.h>
-#include <core/TestCommandImpl.h>
+#include "../../commands/TestCommandImpl.h"
 #include <MovementComponent.h>
 #include "WorldLoaderImpl.h"
 
@@ -26,7 +26,6 @@ WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
 	input.AddCommand<TestCommandImpl>("SPACE");
 
 	auto& movement = rect->AddComponent<MovementComponent>();
-	movement.SetVelocity({ 1, 0 });
 
     newWorld->AddEntity(std::move(rect));
 
