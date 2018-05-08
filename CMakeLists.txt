@@ -3,7 +3,7 @@ project(Simple2DEngine)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(src/commands)
+include_directories(src/utils/commands)
 include_directories(src/components)
 include_directories(src/ecs)
 include_directories(src/engine/core)
@@ -11,10 +11,9 @@ include_directories(src/engine/factories)
 include_directories(src/systems)
 
 add_executable(Simple2DEngine
-        src/commands/Command.h
-        src/commands/TestCommandImpl.cpp
-        src/commands/TestCommandImpl.h
-        src/components/InputComponent.cpp
+        src/utils/commands/Command.h
+        src/utils/commands/TestCommandImpl.cpp
+        src/utils/commands/TestCommandImpl.h
         src/components/InputComponent.h
         src/components/MovementComponent.cpp
         src/components/MovementComponent.h
@@ -65,7 +64,21 @@ add_executable(Simple2DEngine
         src/systems/SpritesRenderer.h
         src/systems/Updater.cpp
         src/systems/Updater.h
-        src/main.cpp)
+        src/components/StateComponent.h
+        src/components/CommandComponent.cpp
+        src/components/CommandComponent.h
+        src/components/StateComponent.cpp
+        src/systems/StateUpdater.cpp
+        src/systems/StateUpdater.h
+        src/components/AnimationComponent.cpp
+        src/components/AnimationComponent.h
+        src/systems/AnimationRenderer.cpp
+        src/systems/AnimationRenderer.h
+        src/utils/animation/Animation.cpp
+        src/utils/animation/Animation.h
+        src/utils/animation/AnimatedSprite.cpp
+        src/utils/animation/AnimatedSprite.h
+        src/main.cpp )
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 

@@ -93,6 +93,6 @@ Release/exe/Simple2DEngine.iobj
 Release/obj/Simple2DEngine.log
 *.pdb
 Debug/obj/vc141.idb
-debug/CMakeCache.txt
-debug/CMakeFiles/3.10.3/CMakeCCompiler.cmake
-debug/CMakeFiles/3.10.3/CMakeCXXCompiler.cmake
+debug/
+release/
+

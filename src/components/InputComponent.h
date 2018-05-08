@@ -1,12 +1,10 @@
 #pragma once
-#include <map>
+
 #include "SFML\Window\Keyboard.hpp"
-#include <memory>
-#include "../commands/Command.h"
-#include "../ecs/Component.h"
+#include "CommandComponent.h"
+
 
 using KeysMap = std::map<sf::Keyboard::Key, std::string>;
-using CommandsMap = std::map<std::string, std::unique_ptr<Command>>;
 
 static KeysMap keysMap
 {
@@ -18,18 +16,7 @@ static KeysMap keysMap
 };
 
 
-class InputComponent : public Component
+class InputComponent : public CommandComponent
 {
-public:
-	
-	template<class T> void AddCommand(std::string key)
-	{
-		auto command = std::make_unique<T>();
-		commandsMap.insert(std::make_pair(key, std::move(command)));
-	}
-
-	void executeCommand(std::string key);
-
-	CommandsMap commandsMap;
 };
 

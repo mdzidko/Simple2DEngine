@@ -9,4 +9,3 @@ public:
 
 	virtual ~Command() {};
 };
-

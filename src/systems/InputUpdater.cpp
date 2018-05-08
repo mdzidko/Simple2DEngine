@@ -13,7 +13,7 @@ void InputUpdater::Update(World *world, GameStateMachine *context, float dT)
 	for (auto entity : entities)
 	{
 		auto& ic = entity->GetComponent<InputComponent>();
-		ic.executeCommand(key);
+		ic.ExecuteCommand(key);
 	}
 }
 	

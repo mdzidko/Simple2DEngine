@@ -1,8 +1,8 @@
 #include <PositionComponent.h>
 #include <SpriteComponent.h>
 #include <InputComponent.h>
-#include "../../commands/TestCommandImpl.h"
 #include <MovementComponent.h>
+#include <TestCommandImpl.h>
 #include "WorldLoaderImpl.h"
 
 WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
