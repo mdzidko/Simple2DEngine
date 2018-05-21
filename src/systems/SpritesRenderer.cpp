@@ -16,8 +16,6 @@ void SpritesRenderer::Refresh()
 
 void SpritesRenderer::Render(sf::RenderWindow* window, float interpolation)
 {
-	window->clear();
-
 	for (auto& lePair : entitiesMap)
 	{
 		auto entities = lePair.second;
@@ -46,8 +44,6 @@ void SpritesRenderer::Render(sf::RenderWindow* window, float interpolation)
 			window->draw(sprite);
 		});
 	}
-
-	window->display();
 }
 
 bool SpritesRenderer::CheckEntityMach(Entity* entity)

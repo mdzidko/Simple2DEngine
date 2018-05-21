@@ -2,7 +2,7 @@
 
 #include "AnimatedSprite.h"
 
-AnimatedSprite::AnimatedSprite(sf::Time frameTime, bool paused, bool looped) :
+AnimatedSprite::AnimatedSprite(float frameTime, bool paused, bool looped) :
         m_animation(NULL), m_frameTime(frameTime), m_currentFrame(0), m_isPaused(paused), m_isLooped(looped), m_texture(NULL)
 {
 
@@ -16,7 +16,7 @@ void AnimatedSprite::setAnimation(const Animation& animation)
     setFrame(m_currentFrame);
 }
 
-void AnimatedSprite::setFrameTime(sf::Time time)
+void AnimatedSprite::setFrameTime(float time)
 {
     m_frameTime = time;
 }
@@ -89,7 +89,7 @@ bool AnimatedSprite::isPlaying() const
     return !m_isPaused;
 }
 
-sf::Time AnimatedSprite::getFrameTime() const
+float AnimatedSprite::getFrameTime() const
 {
     return m_frameTime;
 }
@@ -118,10 +118,10 @@ void AnimatedSprite::setFrame(std::size_t newFrame, bool resetTime)
     }
 
     if (resetTime)
-        m_currentTime = sf::Time::Zero;
+        m_currentTime = 0.0f;
 }
 
-void AnimatedSprite::update(sf::Time deltaTime)
+void AnimatedSprite::update(float deltaTime)
 {
     // if not paused and we have a valid animation
     if (!m_isPaused && m_animation)
@@ -133,7 +133,7 @@ void AnimatedSprite::update(sf::Time deltaTime)
         if (m_currentTime >= m_frameTime)
         {
             // reset time, but keep the remainder
-            m_currentTime = sf::microseconds(m_currentTime.asMicroseconds() % m_frameTime.asMicroseconds());
+            m_currentTime = 0.0f;
 
             // get next Frame index
             if (m_currentFrame + 1 < m_animation->getSize())
@@ -162,6 +162,7 @@ void AnimatedSprite::draw(sf::RenderTarget& target, sf::RenderStates states) con
     {
         states.transform *= getTransform();
         states.texture = m_texture;
+        states.transform.scale(-1.f,1.f);
         target.draw(m_vertices, 4, sf::Quads, states);
     }
 }

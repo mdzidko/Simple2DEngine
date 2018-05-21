@@ -7,4 +7,5 @@ struct Context
 {
     sf::RenderWindow* renderWindow;
     TexturesHolder* texturesHolder;
+    AnimationsHolder* animationsHolder;
 };

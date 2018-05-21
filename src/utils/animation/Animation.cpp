@@ -28,3 +28,13 @@ const sf::IntRect& Animation::getFrame(std::size_t n) const
 {
     return m_frames[n];
 }
+
+bool Animation::loadFromFile(const std::string &filename)
+{
+   std::ifstream
+
+
+    sf::Texture texture;
+    texture.loadFromFile(filename);
+    setSpriteSheet(texture);
+}

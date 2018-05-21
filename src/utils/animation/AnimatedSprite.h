@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics/RenderTarget.hpp>
-#include <SFML/System/Time.hpp>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include <SFML/System/Vector2.hpp>
@@ -11,11 +10,11 @@
 class AnimatedSprite : public sf::Drawable, public sf::Transformable
 {
 public:
-    explicit AnimatedSprite(sf::Time frameTime = sf::seconds(0.2f), bool paused = false, bool looped = true);
+    explicit AnimatedSprite(float frameTime = 0.2f, bool paused = false, bool looped = true);
 
-    void update(sf::Time deltaTime);
+    void update(float deltaTime);
     void setAnimation(const Animation& animation);
-    void setFrameTime(sf::Time time);
+    void setFrameTime(float time);
     void play();
     void play(const Animation& animation);
     void pause();
@@ -27,13 +26,13 @@ public:
     sf::FloatRect getGlobalBounds() const;
     bool isLooped() const;
     bool isPlaying() const;
-    sf::Time getFrameTime() const;
+    float getFrameTime() const;
     void setFrame(std::size_t newFrame, bool resetTime = true);
 
 private:
     const Animation* m_animation;
-    sf::Time m_frameTime;
-    sf::Time m_currentTime;
+    float m_frameTime;
+    float m_currentTime;
     std::size_t m_currentFrame;
     bool m_isPaused;
     bool m_isLooped;

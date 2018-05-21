@@ -46,7 +46,7 @@ add_executable(Simple2DEngine
         src/engine/factories/PausedStateFactory.h
         src/engine/factories/PlayingStateFactory.cpp
         src/engine/factories/PlayingStateFactory.h
-        src/engine/factories/TexturesLoader.h
+        src/engine/factories/ResourcesLoader.h
         src/engine/factories/TexturesLoaderImpl.cpp
         src/engine/factories/TexturesLoaderImpl.h
         src/engine/factories/WindowLoader.h
@@ -78,7 +78,7 @@ add_executable(Simple2DEngine
         src/utils/animation/Animation.h
         src/utils/animation/AnimatedSprite.cpp
         src/utils/animation/AnimatedSprite.h
-        src/main.cpp )
+        src/main.cpp src/systems/AnimationUpdater.cpp src/systems/AnimationUpdater.h src/engine/factories/AnimationsLoaderImpl.cpp src/engine/factories/AnimationsLoaderImpl.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
