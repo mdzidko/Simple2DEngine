@@ -5,8 +5,6 @@
 #include "SpriteComponent.h"
 #include <map>
 
-using LayeredEntitiesMap = std::map<RenderLayers, std::vector<Entity*>>;
-
 class SpritesRenderer : public Renderer
 {
 public:

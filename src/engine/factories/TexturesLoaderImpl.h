@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TexturesLoader.h"
+#include "ResourcesLoader.h"
 
 class TexturesLoaderImpl : public TexturesLoader
 {

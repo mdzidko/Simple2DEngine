@@ -5,9 +5,13 @@
 class AnimationRenderer : public Renderer
 {
 public:
-    void Render(sf::RenderWindow *window, float interpolation) override;
+    virtual void Render(sf::RenderWindow* window, float interpolation) override;
+    virtual void Refresh() override;
 
 protected:
-    bool CheckEntityMach(Entity *entity) override;
+    LayeredEntitiesMap entitiesMap;
+
+    virtual bool CheckEntityMach(Entity* entity) override;
+    virtual void AddEntityToContainer(Entity* entity) override;
 };
 

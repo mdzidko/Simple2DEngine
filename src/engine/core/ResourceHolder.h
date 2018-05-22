@@ -3,6 +3,7 @@
 #include <memory>
 #include <map>
 #include <assert.h>
+#include "../../utils/animation/Animation.h"
 
 template <typename Resource, typename Identifier> class ResourceHolder
 {
@@ -37,3 +38,6 @@ template <typename Resource, typename Identifier> const Resource& ResourceHolder
 };
 
 using TexturesHolder = ResourceHolder<sf::Texture, std::string>;
+using AnimationsHolder = ResourceHolder<Animation, std::string>;
+
+

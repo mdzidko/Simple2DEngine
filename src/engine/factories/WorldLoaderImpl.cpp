@@ -3,12 +3,14 @@
 #include <InputComponent.h>
 #include <MovementComponent.h>
 #include <TestCommandImpl.h>
+#include <AnimationComponent.h>
 #include "WorldLoaderImpl.h"
 
 WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
 {
     WorldPtr newWorld = std::make_unique<World>(context.renderWindow, gameState);
     TexturesHolder* texturesHolder = context.texturesHolder;
+    AnimationsHolder* animationsHolder = context.animationsHolder;
 
     auto rect = std::make_unique<Entity>();
 
@@ -20,7 +22,10 @@ WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
 	rect = std::make_unique<Entity>();
 
 	rect->AddComponent<PositionComponent>(100, 300);
-	rect->AddComponent<SpriteComponent>(texturesHolder->Get("PLAYER"), RenderLayers::FRONT);
+	//rect->AddComponent<SpriteComponent>(texturesHolder->Get("PLAYER"), RenderLayers::FRONT);
+    auto& animComp = rect->AddComponent<AnimationComponent>(0.1f, RenderLayers::FRONT);
+    animComp.AddAnimation("PLAYER_WALK", &animationsHolder->Get("PLAYER_WALK"));
+    animComp.PlayAnimation("PLAYER_WALK");
 
 	auto& input = rect->AddComponent<InputComponent>();
 	input.AddCommand<TestCommandImpl>("SPACE");

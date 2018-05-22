@@ -14,3 +14,10 @@ protected:
 	Entity* parent{ nullptr };
 };
 
+
+enum class RenderLayers
+{
+	BACK = 1,
+	MIDDLE = 2,
+	FRONT = 3
+};

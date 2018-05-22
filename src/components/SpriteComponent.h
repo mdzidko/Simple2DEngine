@@ -3,13 +3,6 @@
 #include "SFML\Graphics\Texture.hpp"
 #include "SFML\Graphics\Sprite.hpp"
 
-enum class RenderLayers
-{
-	BACK = 1,
-	MIDDLE = 2,
-	FRONT = 3
-};
-
 struct SpriteComponent : public Component
 {
 public:

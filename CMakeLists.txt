@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.9)
 project(Simple2DEngine)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -14,6 +14,7 @@ add_executable(Simple2DEngine
         src/utils/commands/Command.h
         src/utils/commands/TestCommandImpl.cpp
         src/utils/commands/TestCommandImpl.h
+        src/utils/json/json.hpp
         src/components/InputComponent.h
         src/components/MovementComponent.cpp
         src/components/MovementComponent.h
@@ -46,7 +47,7 @@ add_executable(Simple2DEngine
         src/engine/factories/PausedStateFactory.h
         src/engine/factories/PlayingStateFactory.cpp
         src/engine/factories/PlayingStateFactory.h
-        src/engine/factories/TexturesLoader.h
+        src/engine/factories/ResourcesLoader.h
         src/engine/factories/TexturesLoaderImpl.cpp
         src/engine/factories/TexturesLoaderImpl.h
         src/engine/factories/WindowLoader.h
@@ -78,7 +79,7 @@ add_executable(Simple2DEngine
         src/utils/animation/Animation.h
         src/utils/animation/AnimatedSprite.cpp
         src/utils/animation/AnimatedSprite.h
-        src/main.cpp )
+        src/main.cpp src/systems/AnimationUpdater.cpp src/systems/AnimationUpdater.h src/engine/factories/AnimationsLoaderImpl.cpp src/engine/factories/AnimationsLoaderImpl.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
