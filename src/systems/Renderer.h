@@ -17,3 +17,4 @@ protected:
 };
 
 using RendererPtr = std::unique_ptr<Renderer>;
+

@@ -11,22 +11,23 @@
 class AnimationComponent : public Component, public sf::Transformable, public sf::Drawable
 {
 public:
-    AnimationComponent(float frameTime = 0.1f);
+    AnimationComponent(float frameTime = 0.1f, RenderLayers layer = RenderLayers::FRONT);
 
-    void AddAnimation(std::string name, Animation* animation);
+    void AddAnimation(std::string name, const Animation* animation);
     void PlayAnimation(std::string animation, bool flipped = false);
 
     void Update(float deltaTime);
-    void Draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    RenderLayers renderLayer;
 
 private:
     void setFrame(std::size_t newFrame, bool resetTime = true);
 
-    std::map<std::string, Animation*> animationsMap;
-    Animation* currentAnimation;
-    float frameTime;
-    float currentTime;
-    std::size_t currentFrame;
+    std::map<std::string, const Animation*> animationsMap;
+    const Animation* currentAnimation{nullptr};
+    float frameTime{0.0f};
+    float currentTime{0.0f};
+    std::size_t currentFrame{0};
     bool flipped {false};
 
     const sf::Texture* texture;

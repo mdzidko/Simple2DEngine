@@ -75,7 +75,7 @@ void Engine::LoadWindow(WindowLoader *winLoader)
 
 void Engine::LoadGameStates(GSMLoader *gsLoader)
 {
-    Context context{mainWindow.get(), &texturesHolder};
+    Context context{mainWindow.get(), &texturesHolder, &animationsHolder};
     states = std::move(gsLoader->Load(context));
 }
 

@@ -1,11 +1,12 @@
 #include "AnimationComponent.h"
 
-AnimationComponent::AnimationComponent(float frameTime)
+AnimationComponent::AnimationComponent(float frameTime, RenderLayers layer)
 {
     this->frameTime = frameTime;
+    this->renderLayer = layer;
 }
 
-void AnimationComponent::AddAnimation(std::string name, Animation* animation)
+void AnimationComponent::AddAnimation(std::string name, const Animation* animation)
 {
     animationsMap.insert({name, animation});
 }
@@ -68,7 +69,7 @@ void AnimationComponent::Update(float deltaTime)
     }
 }
 
-void AnimationComponent::Draw(sf::RenderTarget& target, sf::RenderStates states) const
+void AnimationComponent::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     if (currentAnimation && texture)
     {

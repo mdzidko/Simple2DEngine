@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.9)
 project(Simple2DEngine)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -14,6 +14,7 @@ add_executable(Simple2DEngine
         src/utils/commands/Command.h
         src/utils/commands/TestCommandImpl.cpp
         src/utils/commands/TestCommandImpl.h
+        src/utils/json/json.hpp
         src/components/InputComponent.h
         src/components/MovementComponent.cpp
         src/components/MovementComponent.h
