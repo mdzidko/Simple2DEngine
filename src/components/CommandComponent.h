@@ -18,6 +18,7 @@ public:
     }
 
     void ExecuteCommand(std::string key);
+    bool HasCommand(std::string key);
 
 protected:
     CommandsMap commandsMap;

@@ -1,19 +1,25 @@
 #include <InputComponent.h>
 #include "InputUpdater.h"
 #include "GameStateMachine.h"
-#include <iostream>
 
 void InputUpdater::Update(World *world, GameStateMachine *context, float dT)
 {
+	std::string noKeyPressed("NO_KEY_PRESSED");
 	auto key = GetPressedKey();
-
-	if (key == "")
-		return;
 
 	for (auto entity : entities)
 	{
 		auto& ic = entity->GetComponent<InputComponent>();
-		ic.ExecuteCommand(key);
+
+		if (key == "")
+		{
+			if(ic.HasCommand(noKeyPressed))
+				ic.ExecuteCommand(noKeyPressed);
+			else
+				return;
+		}
+		else
+			ic.ExecuteCommand(key);
 	}
 }
 	

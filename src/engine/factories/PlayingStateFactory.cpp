@@ -3,6 +3,7 @@
 #include <MovementUpdater.h>
 #include <AnimationRenderer.h>
 #include <AnimationUpdater.h>
+#include <StateUpdater.h>
 #include "PlayingStateFactory.h"
 #include "WorldLoaderImpl.h"
 
@@ -18,6 +19,9 @@ GameStatePtr PlayingStateFactory::Create(Context context)
 
     auto inputUpdater = std::make_unique<InputUpdater>();
     state->AddUpdater(std::move(inputUpdater));
+
+    auto stateUpdater = std::make_unique<StateUpdater>();
+    state->AddUpdater(std::move(stateUpdater));
 
     auto movementUpdater = std::make_unique<MovementUpdater>();
     state->AddUpdater(std::move(movementUpdater));

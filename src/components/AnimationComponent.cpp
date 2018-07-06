@@ -14,6 +14,10 @@ void AnimationComponent::AddAnimation(std::string name, const Animation* animati
 void AnimationComponent::PlayAnimation(std::string animation, bool flipped)
 {
     auto animationIt = animationsMap.find(animation);
+
+    if(currentAnimation == animationIt->second)
+        return;
+
     currentAnimation = animationIt->second;
 
     texture = currentAnimation->getSpriteSheet();
@@ -77,7 +81,10 @@ void AnimationComponent::draw(sf::RenderTarget& target, sf::RenderStates states)
         states.transform *= getTransform();
 
         if(flipped)
+        {
             states.transform.scale(-1.f, 1.f);
+            states.transform.translate(-currentAnimation->getFrame(currentFrame).width, 0.f);
+        }
 
         target.draw(vertices, 4, sf::Quads, states);
     }

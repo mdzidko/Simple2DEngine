@@ -12,8 +12,8 @@ include_directories(src/systems)
 
 add_executable(Simple2DEngine
         src/utils/commands/Command.h
-        src/utils/commands/TestCommandImpl.cpp
-        src/utils/commands/TestCommandImpl.h
+        src/utils/commands/TestStateCommandImpl.cpp
+        src/utils/commands/TestStateCommandImpl.h
         src/utils/json/json.hpp
         src/components/InputComponent.h
         src/components/MovementComponent.cpp

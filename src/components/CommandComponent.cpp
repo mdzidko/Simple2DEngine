@@ -10,3 +10,13 @@ void CommandComponent::ExecuteCommand(std::string key)
         command->execute(parent);
     }
 }
+
+bool CommandComponent::HasCommand(std::string key)
+{
+    auto commandIt = commandsMap.find(key);
+
+    if(commandIt != commandsMap.end())
+        return true;
+
+    return false;
+}

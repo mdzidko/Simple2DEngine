@@ -6,6 +6,9 @@ void AnimationsLoaderImpl::Load(ResourceHolder<Animation, std::string> &resource
     try
     {
         resourcesHolder.Load("PLAYER_WALK", "resources/animations/player_walk.json");
+        resourcesHolder.Load("PLAYER_IDDLE", "resources/animations/player_iddle.json");
+        resourcesHolder.Load("SLIME_WALK", "resources/animations/slime_walk.json");
+        resourcesHolder.Load("FLY", "resources/animations/fly.json");
     }
     catch (std::runtime_error e)
     {
