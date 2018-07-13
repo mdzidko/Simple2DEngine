@@ -1,6 +1,8 @@
 #include <PositionComponent.h>
 #include <MovementComponent.h>
 #include <algorithm>
+#include <World.h>
+#include <StateComponent.h>
 #include "MovementUpdater.h"
 
 void MovementUpdater::Update(World *world, GameStateMachine *context, float dT)
@@ -14,7 +16,9 @@ void MovementUpdater::Update(World *world, GameStateMachine *context, float dT)
 					  auto newVel = mc.GetVelocity() + (mc.GetAcceleration() * dT);
 					  mc.SetVelocity(newVel);
 
-                      auto newPos = pc.GetPosition() + (newVel * dT);
+                      auto translation = newVel * dT;
+
+                      auto newPos = pc.GetPosition() + translation;
                       pc.SetPosition(newPos);
                   });
 }

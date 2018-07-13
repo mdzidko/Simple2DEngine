@@ -60,6 +60,8 @@ add_executable(Simple2DEngine
         src/systems/InputUpdater.h
         src/systems/MovementUpdater.cpp
         src/systems/MovementUpdater.h
+        src/systems/CameraUpdater.cpp
+        src/systems/CameraUpdater.h
         src/systems/Renderer.h
         src/systems/SpritesRenderer.cpp
         src/systems/SpritesRenderer.h
@@ -73,13 +75,19 @@ add_executable(Simple2DEngine
         src/systems/StateUpdater.h
         src/components/AnimationComponent.cpp
         src/components/AnimationComponent.h
+        src/components/CameraComponent.cpp
+        src/components/CameraComponent.h
         src/systems/AnimationRenderer.cpp
         src/systems/AnimationRenderer.h
         src/utils/animation/Animation.cpp
         src/utils/animation/Animation.h
         src/utils/animation/AnimatedSprite.cpp
         src/utils/animation/AnimatedSprite.h
-        src/main.cpp src/systems/AnimationUpdater.cpp src/systems/AnimationUpdater.h src/engine/factories/AnimationsLoaderImpl.cpp src/engine/factories/AnimationsLoaderImpl.h)
+        src/main.cpp
+        src/systems/AnimationUpdater.cpp
+        src/systems/AnimationUpdater.h
+        src/engine/factories/AnimationsLoaderImpl.cpp
+        src/engine/factories/AnimationsLoaderImpl.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
