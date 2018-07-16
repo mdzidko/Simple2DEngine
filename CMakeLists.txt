@@ -50,8 +50,6 @@ add_executable(Simple2DEngine
         src/engine/factories/PlayingStateFactory.cpp
         src/engine/factories/PlayingStateFactory.h
         src/engine/factories/ResourcesLoader.h
-        src/engine/factories/TexturesLoaderImpl.cpp
-        src/engine/factories/TexturesLoaderImpl.h
         src/engine/factories/WindowLoader.h
         src/engine/factories/WindowLoaderImpl.cpp
         src/engine/factories/WindowLoaderImpl.h

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <TexturesLoaderImpl.h>
 #include <GSMLoaderImpl.h>
 #include <AnimationsLoaderImpl.h>
 #include <LuaTexturesLoader.h>
