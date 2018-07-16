@@ -9,6 +9,8 @@ include_directories(src/ecs)
 include_directories(src/engine/core)
 include_directories(src/engine/factories)
 include_directories(src/systems)
+include_directories(D:/Programowanie/LuaBridge)
+include_directories(D:/Programowanie/Lua/src)
 
 add_executable(Simple2DEngine
         src/utils/commands/Command.h
@@ -79,7 +81,13 @@ add_executable(Simple2DEngine
         src/utils/animation/Animation.h
         src/utils/animation/AnimatedSprite.cpp
         src/utils/animation/AnimatedSprite.h
-        src/main.cpp src/systems/AnimationUpdater.cpp src/systems/AnimationUpdater.h src/engine/factories/AnimationsLoaderImpl.cpp src/engine/factories/AnimationsLoaderImpl.h)
+        src/main.cpp
+        src/systems/AnimationUpdater.cpp
+        src/systems/AnimationUpdater.h
+        src/engine/factories/AnimationsLoaderImpl.cpp
+        src/engine/factories/AnimationsLoaderImpl.h
+        src/lua/LuaHandler.cpp src/lua/LuaHandler.h
+        src/lua/LuaRegistrator.h src/engine/factories/LuaTexturesLoader.cpp src/engine/factories/LuaTexturesLoader.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
@@ -89,3 +97,5 @@ if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(Simple2DEngine ${SFML_LIBRARIES})
 endif()
+
+target_link_libraries(Simple2DEngine D:/Programowanie/Lua/lib/liblua.a)
