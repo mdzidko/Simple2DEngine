@@ -9,6 +9,8 @@ include_directories(src/ecs)
 include_directories(src/engine/core)
 include_directories(src/engine/factories)
 include_directories(src/systems)
+include_directories(D:/Programowanie/LuaBridge)
+include_directories(D:/Programowanie/Lua/src)
 
 add_executable(Simple2DEngine
         src/utils/commands/Command.h
@@ -48,8 +50,6 @@ add_executable(Simple2DEngine
         src/engine/factories/PlayingStateFactory.cpp
         src/engine/factories/PlayingStateFactory.h
         src/engine/factories/ResourcesLoader.h
-        src/engine/factories/TexturesLoaderImpl.cpp
-        src/engine/factories/TexturesLoaderImpl.h
         src/engine/factories/WindowLoader.h
         src/engine/factories/WindowLoaderImpl.cpp
         src/engine/factories/WindowLoaderImpl.h
@@ -60,8 +60,6 @@ add_executable(Simple2DEngine
         src/systems/InputUpdater.h
         src/systems/MovementUpdater.cpp
         src/systems/MovementUpdater.h
-        src/systems/CameraUpdater.cpp
-        src/systems/CameraUpdater.h
         src/systems/Renderer.h
         src/systems/SpritesRenderer.cpp
         src/systems/SpritesRenderer.h
@@ -70,13 +68,13 @@ add_executable(Simple2DEngine
         src/components/StateComponent.h
         src/components/CommandComponent.cpp
         src/components/CommandComponent.h
+        src/components/CameraComponent.cpp
+        src/components/CameraComponent.h
         src/components/StateComponent.cpp
         src/systems/StateUpdater.cpp
         src/systems/StateUpdater.h
         src/components/AnimationComponent.cpp
         src/components/AnimationComponent.h
-        src/components/CameraComponent.cpp
-        src/components/CameraComponent.h
         src/systems/AnimationRenderer.cpp
         src/systems/AnimationRenderer.h
         src/utils/animation/Animation.cpp
@@ -86,8 +84,12 @@ add_executable(Simple2DEngine
         src/main.cpp
         src/systems/AnimationUpdater.cpp
         src/systems/AnimationUpdater.h
+        src/systems/CameraUpdater.cpp
+        src/systems/CameraUpdater.h
         src/engine/factories/AnimationsLoaderImpl.cpp
-        src/engine/factories/AnimationsLoaderImpl.h)
+        src/engine/factories/AnimationsLoaderImpl.h
+        src/lua/LuaHandler.cpp src/lua/LuaHandler.h
+        src/lua/LuaRegistrator.h src/engine/factories/LuaTexturesLoader.cpp src/engine/factories/LuaTexturesLoader.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 
@@ -97,3 +99,5 @@ if (SFML_FOUND)
     include_directories(${SFML_INCLUDE_DIR})
     target_link_libraries(Simple2DEngine ${SFML_LIBRARIES})
 endif()
+
+target_link_libraries(Simple2DEngine D:/Programowanie/Lua/lib/liblua.a)

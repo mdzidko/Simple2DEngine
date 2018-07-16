@@ -1,14 +1,14 @@
 #include <iostream>
-#include <TexturesLoaderImpl.h>
 #include <GSMLoaderImpl.h>
 #include <AnimationsLoaderImpl.h>
+#include <LuaTexturesLoader.h>
 
 #include "Engine.h"
 #include "WindowLoaderImpl.h"
 
 int main()
 {
-	TexturesLoaderImpl txLoader;
+	LuaTexturesLoader txLoader("resources/scripts/textures.lua");
 	AnimationsLoaderImpl anmLoader;
 	WindowLoaderImpl winLoader;
 	GSMLoaderImpl gsLoader;
