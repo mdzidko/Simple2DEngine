@@ -5,17 +5,18 @@
 #include <TestStateCommandImpl.h>
 #include <AnimationComponent.h>
 #include <StateComponent.h>
+#include <CameraComponent.h>
 #include "WorldLoaderImpl.h"
 
 WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
 {
-    World* newWorld = new World(context.renderWindow, gameState);
+    World* newWorld = new World(context.renderWindow, gameState, {748, 1500});
 
-    LoadPlayer(newWorld, {100, 300}, context);
+    LoadPlayer(newWorld, {180, 300}, context);
 
     LoadEnemy(newWorld, {500, 330}, context);
 
-    LoadMapElement(newWorld, "BACKGROUND", {0, 0}, {1024, 768}, true, context);
+    LoadMapElement(newWorld, "BACKGROUND", {0, 0}, {1500, 768}, true, context);
 
     LoadMapElement(newWorld, "CLOUD_1", {100, 100}, {128, 71}, false, context);
     LoadMapElement(newWorld, "CLOUD_2", {300, 120}, {129, 71}, false, context);
@@ -59,7 +60,7 @@ WorldPtr WorldLoaderImpl::Load(Context context, GameState* gameState)
     LoadMapElement(newWorld, "GRASS_LEFT", {800, 200}, {70, 70}, false, context);
     LoadMapElement(newWorld, "GRASS_MID", {870, 200}, {140, 70}, true, context);
     LoadMapElement(newWorld, "GRASS_RIGHT", {1010, 200}, {70, 70}, false, context);
-    LoadMapElement(newWorld, "SIGN_EXIT", {1030, 200}, {70, 70}, false, context);
+    LoadMapElement(newWorld, "SIGN_EXIT", {1030, 130}, {70, 70}, false, context);
     LoadMapElement(newWorld, "ROCK", {820, 130}, {70, 70}, false, context);
     LoadMapElement(newWorld, "PLANT", {840, 130}, {70, 70}, false, context);
     LoadMapElement(newWorld, "MUSHROOM_RED", {900, 130}, {70, 70}, false, context);
@@ -94,6 +95,7 @@ void WorldLoaderImpl::LoadPlayer(World* world, sf::Vector2f pos, Context &contex
     state.AddCommand<TestStateCommandImpl>("MOVE_LEFT");
 
     auto& movement = ent->AddComponent<MovementComponent>();
+    auto& camera = ent->AddComponent<CameraComponent>(sf::Vector2f(350, 100));
 
     world->AddEntity(std::move(ent));
 }

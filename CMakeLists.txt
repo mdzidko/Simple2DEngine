@@ -68,6 +68,8 @@ add_executable(Simple2DEngine
         src/components/StateComponent.h
         src/components/CommandComponent.cpp
         src/components/CommandComponent.h
+        src/components/CameraComponent.cpp
+        src/components/CameraComponent.h
         src/components/StateComponent.cpp
         src/systems/StateUpdater.cpp
         src/systems/StateUpdater.h
@@ -82,6 +84,8 @@ add_executable(Simple2DEngine
         src/main.cpp
         src/systems/AnimationUpdater.cpp
         src/systems/AnimationUpdater.h
+        src/systems/CameraUpdater.cpp
+        src/systems/CameraUpdater.h
         src/engine/factories/AnimationsLoaderImpl.cpp
         src/engine/factories/AnimationsLoaderImpl.h
         src/lua/LuaHandler.cpp src/lua/LuaHandler.h

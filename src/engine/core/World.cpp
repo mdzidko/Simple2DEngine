@@ -1,11 +1,11 @@
 #include "World.h"
 #include "GameState.h"
 
-World::World(sf::RenderWindow* window, GameState* gameState) :
+World::World(sf::RenderWindow* window, GameState* gameState, sf::Vector2f worldSize) :
 		renderWindow(window)
 		, parent(gameState)
 		, worldView(window->getDefaultView())
-		, worldBounds(0.f, 0.f, worldView.getSize().x, worldView.getSize().y)
+		, worldBounds(0.f, 0.f, worldSize.y, worldSize.x)
 {
 }
 

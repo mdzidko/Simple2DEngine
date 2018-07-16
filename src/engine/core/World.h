@@ -13,18 +13,18 @@ class GameState;
 class World
 {
 public:
-	World(sf::RenderWindow* window, GameState* gameState);
+	World(sf::RenderWindow* window, GameState* gameState, sf::Vector2f worldSize);
 
 	void AddEntity(EntityPtr entity);
 	void RefreshEntities();
 
     sf::RenderWindow* GetWorldViewWindow();
     sf::FloatRect& GetWorldBounds();
+    sf::View worldView;
 
 private:
     GameState* parent;
     EntitiesVec worldEntities;
-	sf::View worldView;
     sf::FloatRect worldBounds;
     sf::RenderWindow* renderWindow;
 };
