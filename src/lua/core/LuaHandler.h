@@ -35,6 +35,18 @@ public:
         }
     };
 
+    template<typename T> void LuaToVec(const LuaRef &_lRef, std::vector<T> &_vec)
+    {
+        _lRef.push(lState);
+        push(lState, Nil());
+        while (lua_next(lState, -2))
+        {
+            LuaRef val = LuaRef::fromStack(lState, -1);
+            _vec.push_back(val.cast<T>());
+            lua_pop(lState, 1);
+        }
+    };
+
 private:
     lua_State* lState;
 

@@ -6,7 +6,7 @@
 #include <StateUpdater.h>
 #include <CameraUpdater.h>
 #include "PlayingStateFactory.h"
-#include "WorldLoaderImpl.h"
+#include "../../lua/factories/LuaWorldLoader.h"
 
 GameStatePtr PlayingStateFactory::Create(Context context)
 {
@@ -33,7 +33,7 @@ GameStatePtr PlayingStateFactory::Create(Context context)
     auto animationUpdater = std::make_unique<AnimationUpdater>();
     state->AddUpdater(std::move(animationUpdater));
 
-    WorldLoaderImpl worldLoader;
+    LuaWorldLoader worldLoader;
     state->LoadWorld(&worldLoader);
 
     return state;

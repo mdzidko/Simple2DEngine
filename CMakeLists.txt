@@ -54,8 +54,8 @@ add_executable(Simple2DEngine
         src/engine/factories/WindowLoaderImpl.cpp
         src/engine/factories/WindowLoaderImpl.h
         src/engine/factories/WorldLoader.h
-        src/engine/factories/WorldLoaderImpl.cpp
-        src/engine/factories/WorldLoaderImpl.h
+        src/lua/factories/LuaWorldLoader.cpp
+        src/lua/factories/LuaWorldLoader.h
         src/systems/InputUpdater.cpp
         src/systems/InputUpdater.h
         src/systems/MovementUpdater.cpp
@@ -86,9 +86,13 @@ add_executable(Simple2DEngine
         src/systems/AnimationUpdater.h
         src/systems/CameraUpdater.cpp
         src/systems/CameraUpdater.h
-        src/engine/factories/LuaResourcesLoader.h
-        src/lua/LuaHandler.cpp src/lua/LuaHandler.h
-        src/lua/LuaRegistrator.h)
+        src/lua/factories/LuaResourcesLoader.h
+        src/lua/core/LuaHandler.cpp
+        src/lua/core/LuaHandler.h
+        src/engine/factories/EntityFactory.h
+        src/lua/core/LuaRegistrator.h
+        src/lua/factories/LuaEntityFactory.cpp
+        src/lua/factories/LuaEntityFactory.h src/lua/factories/LuaFunctionCommand.cpp src/lua/factories/LuaFunctionCommand.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 

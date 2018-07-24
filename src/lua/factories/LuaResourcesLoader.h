@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ResourcesLoader.h"
-#include "../../lua/LuaHandler.h"
+#include "../core/LuaHandler.h"
 
 template<class ResourceType> class LuaResourcesLoader : public ResourcesLoader<ResourceType>
 {

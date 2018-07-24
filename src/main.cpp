@@ -1,6 +1,6 @@
 #include <iostream>
 #include <GSMLoaderImpl.h>
-#include <LuaResourcesLoader.h>
+#include "lua/factories/LuaResourcesLoader.h"
 
 #include "Engine.h"
 #include "WindowLoaderImpl.h"

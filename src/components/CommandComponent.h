@@ -11,9 +11,9 @@ using CommandsMap = std::map<std::string, std::unique_ptr<Command>>;
 class CommandComponent : public Component
 {
 public:
-    template<class T> void AddCommand(std::string key)
+    template<class T, typename... TArgs> void AddCommand(std::string key, TArgs... args)
     {
-        auto command = std::make_unique<T>();
+        auto command = std::make_unique<T>((args)...);
         commandsMap.insert(std::make_pair(key, std::move(command)));
     }
 
