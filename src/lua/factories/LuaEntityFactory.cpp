@@ -1,10 +1,12 @@
 #include "LuaEntityFactory.h"
+#include "LuaFunctionCommand.h"
 
 LuaEntityFactory::LuaEntityFactory(World* _world, Context* _context, std::string luaScript) :
         luaHandle(luaScript)
 {
     this->world = _world;
     this->context = _context;
+    this->script = luaScript;
 };
 
 void LuaEntityFactory::Create(std::string _objectName, sf::Vector2f pos){
@@ -110,8 +112,7 @@ void LuaEntityFactory::AddInputComponent(Entity *pEntity, LuaRef lua)
     luaHandle.LuaToMap(lua, inputs);
 
     for(auto& inputDef : inputs)
-        std::cout << inputDef.first << ", " << inputDef.second << std::endl;
-        //input.AddCommand<LuaFunctionCommand>(input.first);
+        input.AddCommand<LuaFunctionCommand>(inputDef.first, inputDef.second, script);
 }
 
 void LuaEntityFactory::AddStateComponent(Entity *pEntity, LuaRef lua)
@@ -122,8 +123,7 @@ void LuaEntityFactory::AddStateComponent(Entity *pEntity, LuaRef lua)
     luaHandle.LuaToMap(lua, states);
 
     for(auto& stateDef : states)
-        std::cout << stateDef.first << ", " << stateDef.second << std::endl;
-    //input.AddCommand<LuaFunctionCommand>(input.first);
+        state.AddCommand<LuaFunctionCommand>(stateDef.first, stateDef.second, script);
 }
 
 void LuaEntityFactory::AddMovementComponent(Entity *pEntity, LuaRef lua)

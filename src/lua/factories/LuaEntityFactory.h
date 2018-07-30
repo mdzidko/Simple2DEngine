@@ -33,8 +33,11 @@ private:
     void AddMovementComponent(Entity *pEntity, LuaRef lua);
     void AddCameraComponent(Entity *pEntity, LuaRef lua);
 
+    RenderLayers GetRenderLayer(std::string);
+
     //handlersManager* hManager = nullptr;
     LuaHandler luaHandle;
+    std::string script;
 
     std::map<std::string, RenderLayers> renderLayersMap{
             {"BACK", RenderLayers::BACK},
@@ -42,5 +45,5 @@ private:
             {"MIDDLE", RenderLayers::BACK}
     };
 
-    RenderLayers GetRenderLayer(std::string);
+
 };

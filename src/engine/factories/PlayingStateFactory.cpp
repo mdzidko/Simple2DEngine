@@ -33,7 +33,7 @@ GameStatePtr PlayingStateFactory::Create(Context context)
     auto animationUpdater = std::make_unique<AnimationUpdater>();
     state->AddUpdater(std::move(animationUpdater));
 
-    LuaWorldLoader worldLoader;
+    LuaWorldLoader worldLoader("resources/scripts/worlds.lua");
     state->LoadWorld(&worldLoader);
 
     return state;
