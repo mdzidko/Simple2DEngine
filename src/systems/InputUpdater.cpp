@@ -1,8 +1,8 @@
 #include <InputComponent.h>
 #include "InputUpdater.h"
-#include "GameStateMachine.h"
+#include "GameStateContext.h"
 
-void InputUpdater::Update(World *world, GameStateMachine *context, float dT)
+void InputUpdater::Update(World *world, GameStateContext *context, float dT)
 {
 	std::string noKeyPressed("NO_KEY_PRESSED");
 	auto key = GetPressedKey();

@@ -2,20 +2,20 @@
 
 #include <memory>
 #include <vector>
-#include <WorldLoader.h>
+#include <WorldFactory.h>
 #include "Renderer.h"
 #include "Updater.h"
 #include "World.h"
 #include "Context.h"
 
-class GameStateMachine;
+class GameStateContext;
 
 class GameState
 {
 public:
-	GameState(Context context);
+	GameState(GameStateContext* context);
 
-    void Update(GameStateMachine* gsm, float updateTime);
+    void Update(float updateTime);
 	void Render(float interpolation);
 
     void AddUpdater(UpdaterPtr updater);
@@ -25,14 +25,16 @@ public:
     void RefreshUpdaters();
     void RegisterEntity(Entity* entity);
 
-    void LoadWorld(WorldLoader* worldLoader);
+	World* getWorld();
 
 private:
     std::vector<RendererPtr> renderers;
     std::vector<UpdaterPtr> updaters;
 
     WorldPtr world{nullptr};
-	Context gameContext;
+
+private:
+	GameStateContext* context;
 };
 
 typedef std::unique_ptr<GameState> GameStatePtr;

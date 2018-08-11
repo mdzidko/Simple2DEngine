@@ -6,8 +6,8 @@
 template<class ResourceType> class LuaResourcesLoader : public ResourcesLoader<ResourceType>
 {
 public:
-    LuaResourcesLoader(std::string script, std::string resName) :
-            luaHandle(script), resourceName(resName)
+    LuaResourcesLoader(std::string resName, LuaHandler *handle) :
+            luaHandle(handle), resourceName(resName)
     {
     }
 
@@ -16,8 +16,8 @@ public:
         try
         {
             std::map<std::string, std::string> resourcesMap;
-            auto resourcesDef = luaHandle.GetLuaGlobal(resourceName.c_str());
-            luaHandle.LuaToMap(resourcesDef, resourcesMap);
+            auto resourcesDef = luaHandle->GetLuaGlobal(resourceName.c_str());
+            luaHandle->LuaToMap(resourcesDef, resourcesMap);
 
             for (auto& td : resourcesMap)
             {
@@ -34,6 +34,6 @@ public:
     }
 
 private:
-    LuaHandler luaHandle;
+    LuaHandler* luaHandle;
     std::string resourceName;
 };

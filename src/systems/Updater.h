@@ -1,13 +1,13 @@
 #pragma once
 
 #include "System.h"
-class GameStateMachine;
+class GameStateContext;
 class World;
 
 class Updater : public System
 {
 public:
-	virtual void Update(World* world, GameStateMachine* context, float dT) = 0;
+	virtual void Update(World* world, GameStateContext* context, float dT) = 0;
 	void Refresh() override;
 
 protected:

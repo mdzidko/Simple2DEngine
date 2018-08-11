@@ -5,5 +5,5 @@
 class GSMLoaderImpl : public GSMLoader
 {
 public:
-    GameStateMachinePtr Load(Context context) override;
+    GameStateMachinePtr Load(WorldFactory* worldLoader) override;
 };

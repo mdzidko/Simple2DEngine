@@ -31,12 +31,12 @@ add_executable(Simple2DEngine
         src/ecs/System.h
         src/ecs/UniqueId.h
         src/engine/core/Context.h
-        src/engine/core/Engine.cpp
-        src/engine/core/Engine.h
+        src/engine/core/GameLoop.cpp
+        src/engine/core/GameLoop.h
         src/engine/core/GameState.cpp
         src/engine/core/GameState.h
-        src/engine/core/GameStateMachine.cpp
-        src/engine/core/GameStateMachine.h
+        src/engine/core/GameStateContext.cpp
+        src/engine/core/GameStateContext.h
         src/engine/core/ResourceHolder.h
         src/engine/core/World.cpp
         src/engine/core/World.h
@@ -45,7 +45,7 @@ add_executable(Simple2DEngine
         src/engine/factories/GSMLoaderImpl.h
         src/engine/factories/MenuStateFactory.cpp
         src/engine/factories/MenuStateFactory.h
-        src/engine/factories/PausedStateFactory.cpp
+        src/lua/core/PausedStateFactory.cpp
         src/engine/factories/PausedStateFactory.h
         src/engine/factories/PlayingStateFactory.cpp
         src/engine/factories/PlayingStateFactory.h
@@ -53,9 +53,9 @@ add_executable(Simple2DEngine
         src/engine/factories/WindowLoader.h
         src/engine/factories/WindowLoaderImpl.cpp
         src/engine/factories/WindowLoaderImpl.h
-        src/engine/factories/WorldLoader.h
-        src/lua/factories/LuaWorldLoader.cpp
-        src/lua/factories/LuaWorldLoader.h
+        src/engine/factories/WorldFactory.h
+        src/lua/factories/LuaWorldFactory.cpp
+        src/lua/factories/LuaWorldFactory.h
         src/systems/InputUpdater.cpp
         src/systems/InputUpdater.h
         src/systems/MovementUpdater.cpp

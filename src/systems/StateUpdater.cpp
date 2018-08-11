@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "StateUpdater.h"
 
-void StateUpdater::Update(World *world, GameStateMachine *context, float dT)
+void StateUpdater::Update(World *world, GameStateContext *context, float dT)
 {
     std::for_each(std::begin(entities), std::end(entities),
                   [&](Entity* entity)

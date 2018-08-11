@@ -1,12 +1,12 @@
 #include "GSMLoaderImpl.h"
 #include "PlayingStateFactory.h"
 
-GameStateMachinePtr GSMLoaderImpl::Load(Context context)
+GameStateMachinePtr GSMLoaderImpl::Load(WorldFactory* worldLoader)
 {
-    auto stateMachine = std::make_unique<GameStateMachine>(context);
+    auto stateMachine = std::make_unique<GameStateContext>(worldLoader);
 
     PlayingStateFactory stateFactory;
-    auto palyingState = stateFactory.Create(context);
+    auto palyingState = stateFactory.Create(stateMachine.get());
 
     stateMachine->Push(std::move(palyingState));
 

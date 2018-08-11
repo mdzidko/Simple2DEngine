@@ -20,9 +20,9 @@ using namespace luabridge;
 
 class LuaEntityFactory : public EntityFactory{
 public:
-    LuaEntityFactory(World* _world, Context* _context, std::string luaScript);
+    LuaEntityFactory(TexturesHolder* texturesHolder, AnimationsHolder* animationsHolder, LuaHandler* luaHandle);
 
-    void Create(std::string _objectName, sf::Vector2f pos);
+    void Create(World* world, std::string _objectName, sf::Vector2f pos);
 
 private:
     void AddPositionComponent(Entity *entity, sf::Vector2f pos);
@@ -36,8 +36,9 @@ private:
     RenderLayers GetRenderLayer(std::string);
 
     //handlersManager* hManager = nullptr;
-    LuaHandler luaHandle;
-    std::string script;
+    LuaHandler* luaHandle;
+    TexturesHolder* texturesHolder;
+    AnimationsHolder* animationsHolder;
 
     std::map<std::string, RenderLayers> renderLayersMap{
             {"BACK", RenderLayers::BACK},

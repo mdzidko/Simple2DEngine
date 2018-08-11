@@ -7,12 +7,12 @@
 class LuaFunctionCommand : public Command
 {
 public:
-    LuaFunctionCommand(std::string functionName, std::string script);
+    LuaFunctionCommand(std::string functionName, LuaHandler* luaHandle);
 
     void execute(Entity *entity) override;
 
 private:
     std::string functionName;
-    LuaHandler luaHandle;
+    LuaHandler* luaHandle;
 };
 

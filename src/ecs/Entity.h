@@ -33,7 +33,7 @@ public:
 
 	template<typename T, typename... TArgs> T& AddComponent(TArgs&&... args)
 	{
-		assert(!HasComponent<T>());
+		//assert(!HasComponent<T>());
 
 		T* c(new T(std::forward<TArgs>(args)...));
 		c->SetParent(this);
@@ -49,7 +49,7 @@ public:
 
 	template<typename T> void RemoveComponent()
 	{
-		assert(HasComponent<T>());
+		//assert(HasComponent<T>());
 
 		delete(componentsArray[UniqueId::GetUId<T>()]);
 		componentsArray[UniqueId::GetUId<T>()] = nullptr;

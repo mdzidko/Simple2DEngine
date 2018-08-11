@@ -1,7 +1,7 @@
 #include <AnimationComponent.h>
 #include "AnimationUpdater.h"
 
-void AnimationUpdater::Update(World *world, GameStateMachine *context, float dT)
+void AnimationUpdater::Update(World *world, GameStateContext *context, float dT)
 {
     std::for_each(std::begin(entities), std::end(entities),
                   [&](Entity* entity)

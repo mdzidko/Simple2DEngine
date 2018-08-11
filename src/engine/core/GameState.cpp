@@ -1,12 +1,12 @@
 #include <algorithm>
 #include "GameState.h"
 
-GameState::GameState(Context context)
+GameState::GameState(GameStateContext* context)
 {
-    gameContext = context;
+    this->context = context;
 }
 
-void GameState::Update(GameStateMachine* gsm, float updateTime)
+void GameState::Update(float updateTime)
 {
     RefreshUpdaters();
 
@@ -14,7 +14,7 @@ void GameState::Update(GameStateMachine* gsm, float updateTime)
 		return;
 
     std::for_each(std::begin(updaters), std::end(updaters),
-                  [&](const auto& updater) { updater->Update(world.get(), gsm, updateTime); });
+                  [&](const auto& updater) { updater->Update(world.get(), context, updateTime); });
 }
 
 void GameState::Render(float interpolation)
@@ -61,8 +61,7 @@ void GameState::AddRenderer(RendererPtr renderer)
 	renderers.push_back(move(renderer));
 }
 
-void GameState::LoadWorld(WorldLoader* worldLoader)
+World* GameState::getWorld()
 {
-	auto newWorld = worldLoader->Load(gameContext, this);
-	world = std::move(newWorld);
+	return world.get();
 }

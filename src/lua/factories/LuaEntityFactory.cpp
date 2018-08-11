@@ -1,23 +1,22 @@
 #include "LuaEntityFactory.h"
 #include "LuaFunctionCommand.h"
 
-LuaEntityFactory::LuaEntityFactory(World* _world, Context* _context, std::string luaScript) :
-        luaHandle(luaScript)
+LuaEntityFactory::LuaEntityFactory(TexturesHolder* texturesHolder, AnimationsHolder* animationsHolder, LuaHandler* luaHandle)
 {
-    this->world = _world;
-    this->context = _context;
-    this->script = luaScript;
+    this->texturesHolder = texturesHolder;
+    this->animationsHolder = animationsHolder;
+    this->luaHandle = luaHandle;
 };
 
-void LuaEntityFactory::Create(std::string _objectName, sf::Vector2f pos){
+void LuaEntityFactory::Create(World* world, std::string _objectName, sf::Vector2f pos){
     auto e = std::make_unique<Entity>();
 
     std::cout << "Creating game entity: " << _objectName << std::endl;
 
     std::map<std::string, LuaRef> componentsMap;
 
-    auto entitiesDef = luaHandle.GetLuaGlobal(_objectName.c_str());
-    luaHandle.LuaToMap(entitiesDef, componentsMap);
+    auto entitiesDef = luaHandle->GetLuaGlobal(_objectName.c_str());
+    luaHandle->LuaToMap(entitiesDef, componentsMap);
 
     for (auto& c : componentsMap) {
         auto componentName = c.first;
@@ -66,8 +65,6 @@ void LuaEntityFactory::AddPositionComponent(Entity *entity, sf::Vector2f pos)
 
 void LuaEntityFactory::AddSpriteComponent(Entity *entity, LuaRef value)
 {
-    TexturesHolder* texturesHolder = context->texturesHolder;
-
     auto sizex = value["size_x"];
     auto sizey = value["size_y"];
     auto textureName = value["texture"];
@@ -79,15 +76,13 @@ void LuaEntityFactory::AddSpriteComponent(Entity *entity, LuaRef value)
 
 void LuaEntityFactory::AddAnimationComponent(Entity *entity, LuaRef value)
 {
-    AnimationsHolder* animationsHolder = context->animationsHolder;
-
     auto layerName = value["layer"];
     auto activeAnimation = value["activeAnimation"];
 
     std::vector<std::string> animationsVec;
 
     auto animations = value["animations"];
-    luaHandle.LuaToVec(animations, animationsVec);
+    luaHandle->LuaToVec(animations, animationsVec);
 
     auto& animComp = entity->AddComponent<AnimationComponent>(300.f, GetRenderLayer(layerName));
 
@@ -109,10 +104,10 @@ void LuaEntityFactory::AddInputComponent(Entity *pEntity, LuaRef lua)
     auto& input = pEntity->AddComponent<InputComponent>();
 
     std::map<std::string, std::string> inputs;
-    luaHandle.LuaToMap(lua, inputs);
+    luaHandle->LuaToMap(lua, inputs);
 
     for(auto& inputDef : inputs)
-        input.AddCommand<LuaFunctionCommand>(inputDef.first, inputDef.second, script);
+        input.AddCommand<LuaFunctionCommand>(inputDef.first, inputDef.second, luaHandle);
 }
 
 void LuaEntityFactory::AddStateComponent(Entity *pEntity, LuaRef lua)
@@ -120,10 +115,10 @@ void LuaEntityFactory::AddStateComponent(Entity *pEntity, LuaRef lua)
     auto& state = pEntity->AddComponent<StateComponent>();
 
     std::map<std::string, std::string> states;
-    luaHandle.LuaToMap(lua, states);
+    luaHandle->LuaToMap(lua, states);
 
     for(auto& stateDef : states)
-        state.AddCommand<LuaFunctionCommand>(stateDef.first, stateDef.second, script);
+        state.AddCommand<LuaFunctionCommand>(stateDef.first, stateDef.second, luaHandle);
 }
 
 void LuaEntityFactory::AddMovementComponent(Entity *pEntity, LuaRef lua)

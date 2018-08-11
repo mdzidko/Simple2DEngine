@@ -5,5 +5,5 @@
 class PlayingStateFactory
 {
 public:
-    GameStatePtr Create(Context context);
+    GameStatePtr Create(GameStateContext* context);
 };

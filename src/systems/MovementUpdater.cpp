@@ -5,7 +5,7 @@
 #include <StateComponent.h>
 #include "MovementUpdater.h"
 
-void MovementUpdater::Update(World *world, GameStateMachine *context, float dT)
+void MovementUpdater::Update(World *world, GameStateContext *context, float dT)
 {
     std::for_each(std::begin(entities), std::end(entities),
                   [&](Entity* entity)

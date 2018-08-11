@@ -1,12 +1,12 @@
 #pragma once
 
 #include <memory>
-#include "GameStateMachine.h"
+#include "GameStateContext.h"
 #include "Context.h"
 
 class GSMLoader
 {
 public:
-    virtual GameStateMachinePtr Load(Context context) = 0;
+    virtual GameStateMachinePtr Load(WorldFactory* worldLoader) = 0;
 };
 
