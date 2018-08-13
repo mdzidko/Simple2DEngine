@@ -33,7 +33,6 @@ private:
 
     WorldPtr world{nullptr};
 
-private:
 	GameStateContext* context;
 };
 

@@ -40,19 +40,14 @@ add_executable(Simple2DEngine
         src/engine/core/ResourceHolder.h
         src/engine/core/World.cpp
         src/engine/core/World.h
-        src/engine/factories/GSMLoader.h
-        src/engine/factories/GSMLoaderImpl.cpp
-        src/engine/factories/GSMLoaderImpl.h
-        src/engine/factories/MenuStateFactory.cpp
-        src/engine/factories/MenuStateFactory.h
-        src/lua/core/PausedStateFactory.cpp
-        src/engine/factories/PausedStateFactory.h
-        src/engine/factories/PlayingStateFactory.cpp
-        src/engine/factories/PlayingStateFactory.h
+        src/lua/factories/MenuStateFactory.cpp
+        src/lua/factories/MenuStateFactory.h
+        src/lua/factories/PlayingStateFactory.cpp
+        src/lua/factories/PlayingStateFactory.h
         src/engine/factories/ResourcesLoader.h
         src/engine/factories/WindowLoader.h
-        src/engine/factories/WindowLoaderImpl.cpp
-        src/engine/factories/WindowLoaderImpl.h
+        src/lua/factories/WindowLoaderImpl.cpp
+        src/lua/factories/WindowLoaderImpl.h
         src/engine/factories/WorldFactory.h
         src/lua/factories/LuaWorldFactory.cpp
         src/lua/factories/LuaWorldFactory.h
@@ -92,7 +87,7 @@ add_executable(Simple2DEngine
         src/engine/factories/EntityFactory.h
         src/lua/core/LuaRegistrator.h
         src/lua/factories/LuaEntityFactory.cpp
-        src/lua/factories/LuaEntityFactory.h src/lua/factories/LuaFunctionCommand.cpp src/lua/factories/LuaFunctionCommand.h)
+        src/lua/factories/LuaEntityFactory.h src/lua/factories/LuaFunctionCommand.cpp src/lua/factories/LuaFunctionCommand.h src/utils/collisions/Body.h src/utils/collisions/QuadTree.cpp src/utils/collisions/QuadTree.h src/components/CollisionComponent.cpp src/components/CollisionComponent.h src/systems/CollisionSystem.cpp src/systems/CollisionSystem.h)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake_modules")
 

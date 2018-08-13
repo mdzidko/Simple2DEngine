@@ -27,6 +27,7 @@ private:
     EntitiesVec worldEntities;
     sf::FloatRect worldBounds;
     sf::RenderWindow* renderWindow;
+	//QuadTree quadTree
 };
 
 using WorldPtr = std::unique_ptr<World>;

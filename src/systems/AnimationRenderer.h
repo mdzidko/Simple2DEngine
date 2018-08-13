@@ -9,7 +9,6 @@ public:
     virtual void Refresh() override;
 
 protected:
-    LayeredEntitiesMap entitiesMap;
 
     virtual bool CheckEntityMach(Entity* entity) override;
     virtual void AddEntityToContainer(Entity* entity) override;

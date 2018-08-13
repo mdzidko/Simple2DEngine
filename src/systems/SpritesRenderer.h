@@ -11,8 +11,7 @@ public:
 	virtual void Render(sf::RenderWindow* window, float interpolation) override;
 	virtual void Refresh() override;
 
-protected:	
-	LayeredEntitiesMap entitiesMap;
+protected:
 
 	virtual bool CheckEntityMach(Entity* entity) override;
 	virtual void AddEntityToContainer(Entity* entity) override;

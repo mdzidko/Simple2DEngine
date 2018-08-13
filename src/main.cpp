@@ -1,10 +1,9 @@
 #include <iostream>
-#include <GSMLoaderImpl.h>
-#include <PlayingStateFactory.h>
+#include "lua/factories/PlayingStateFactory.h"
 #include "lua/factories/LuaResourcesLoader.h"
 
 #include "GameLoop.h"
-#include "WindowLoaderImpl.h"
+#include "lua/factories/WindowLoaderImpl.h"
 #include "lua/factories/LuaEntityFactory.h"
 #include "lua/factories/LuaWorldFactory.h"
 

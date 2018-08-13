@@ -6,7 +6,7 @@
 #include <StateUpdater.h>
 #include <CameraUpdater.h>
 #include "PlayingStateFactory.h"
-#include "../../lua/factories/LuaWorldFactory.h"
+#include "LuaWorldFactory.h"
 
 GameStatePtr PlayingStateFactory::Create(GameStateContext* context)
 {
